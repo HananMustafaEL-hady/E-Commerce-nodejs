@@ -7,7 +7,7 @@ const User = require('../models/user');
 const adminAuth=require('../middleware/authAdmin');
 const admincontrollers=require('../controllers/controllersauth');
 ///////endpoint only
-routeradmin.post('/', admincontrollers,async(req, res) => {
+routeradmin.post('/', adminAuth,async(req, res) => {
     try {
         console.log(req.body);
 
