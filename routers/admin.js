@@ -7,24 +7,27 @@ const User = require('../models/user');
 const adminAuth=require('../middleware/authAdmin');
 const admincontrollers=require('../controllers/controllersauth');
 ///////endpoint only
-routeradmin.post('/',async(req, res) => {
+routeradmin.post('/', async(req, res) => {
+    console.log(req.body);
     try {
-        console.log(req.body);
 
+        firstName=req.body.firstName;
+        lastName=req.body.lastName;
+        email=req.body.email;
+        password=req.body.password;
+        address=req.body.address;
+        gender=req.body.gender;
+        phone=req.body.phone;
 
-        const password=req.body.password;
-        const firstName=req.body.firstName;
-        const lastName=req.body.lastName;
-
-        const hash =  bcrypt.hash(password, 8);
-        const user = await Admin.create({ 
+        const hash = await bcrypt.hash(password, 7);
+        const user = await User.create({ 
             firstName:firstName, 
             lastName:lastName,
-            email:req.body.email,
+            email:email,
             password: hash,
-             address:req.body.address
-             ,phone:req.body.phone
-             ,gender:req.body.gender
+             address:address
+             ,phone:phone
+             ,gender:gender
              ,role:"admin"});
 
        res.statusCode = 201;
@@ -33,8 +36,7 @@ routeradmin.post('/',async(req, res) => {
         res.statusCode = 422;
         res.send(err);
     }
-    });
-
+});
 //get user
 routeradmin.get('/',adminAuth,admincontrollers.getuser);
 
