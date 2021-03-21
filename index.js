@@ -31,7 +31,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // });
 
 
-app.use(cors());
 
 app.use("/cart", routercart);
 app.use("/users", routerUser);
@@ -40,6 +39,7 @@ app.use("/menuOffers", routerMenuOffers);
 app.use("/admin", routeradmin);
 app.use("/upload", routerimg);
 app.use("/order", routerOrder);
+app.use(cors());
 
 
 
