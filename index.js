@@ -30,6 +30,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //   next();
 // });
 
+
 app.use(cors());
 
 app.use("/cart", routercart);

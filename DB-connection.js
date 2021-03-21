@@ -1,10 +1,11 @@
+const express = require('express');
+const app = express();
+const mongoose = require('mongoose');
+
 
  const url_node='mongodb+srv://sayed:sa12345@mynode.qhp5b.mongodb.net/DB?retryWrites=true&w=majority';
 
 
-const express = require('express');
-const app = express();
-const mongoose = require('mongoose');
 
 // const url_node = 'mongodb+srv://sayed:sa12345@mynode.qhp5b.mongodb.net/Restaurant?retryWrites=true&w=majority';
 

@@ -4,13 +4,18 @@ const Cart = require('../models/cart');
 
 
 ///////////////////Menu////////////////////////////////////////////
-exports.getmenu=(req, res,next) => {
-    
-    Menu.find({}, function(err, menu) {
-        if (err) throw err;
-        res.send(menu);
+exports.getmenu=async(req, res,next) => {
+    try {
+        let menus = await Menu.find();
+        res.status(200).send({menus, success:true})
+    } catch (error) {
+        res.status(400).send({error, success:false})
+    }
+    // Menu.find({}, function(err, menu) {
+    //     if (err) throw err;
+    //     res.send(menu);
 
-    }).exec()
+    // }).exec()
     
 }
 
