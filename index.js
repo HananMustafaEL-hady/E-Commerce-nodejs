@@ -77,6 +77,6 @@ app.use("/order", routerOrder);
 //   res.status(500).send(err);
 // });
 
-const xyz  =  app.listen(3000, () => {
+const xyz  =  app.listen(process.env.PORT || 3000, () => {
   console.log("server listening on port :");
 });
