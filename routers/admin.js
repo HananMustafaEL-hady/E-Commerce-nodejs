@@ -12,12 +12,14 @@ routeradmin.post('/',async(req, res) => {
         console.log(req.body);
 
 
-        password=req.body.password;
-       
+        const password=req.body.password;
+        const firstName=req.body.firstName;
+        const lastName=req.body.lastName;
+
         const hash =  bcrypt.hash(password, 8);
         const user = await Admin.create({ 
-            firstName:req.body.firstName, 
-            lastName:req.body.lastName,
+            firstName:firstName, 
+            lastName:lastName,
             email:req.body.email,
             password: hash,
              address:req.body.address
