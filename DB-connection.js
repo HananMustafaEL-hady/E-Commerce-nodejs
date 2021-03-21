@@ -4,8 +4,6 @@ const mongoose = require('mongoose');
 
 
 
-
-
 const MongoClient = require('mongodb').MongoClient;
 const url_node='mongodb+srv://sayed:sa12345@mynode.qhp5b.mongodb.net/DB?retryWrites=true&w=majority';
 // const uri = "mongodb+srv://<username>:<password>@mynode.qhp5b.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
@@ -35,7 +33,7 @@ client.connect(err => {
 
 // mongoose.connect(url, {useNewUrlParser: true});
 
-mongoose.connect(process.env.PORT ||url_node,
+mongoose.connect(process.env.MONGO_DB ||MONGO_DB,
  {
    // dbName : 'DB',
 
