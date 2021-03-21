@@ -68,7 +68,7 @@ routeradmin.patch('/phone',adminAuth ,admincontrollers.patchphone);
         const isMatch = await bcrypt.compare(password, userlogin.password);
         if (!isMatch) throw " wrong email or passowrd";
          if(userlogin.role!="admin") throw " wrong email or passowrd";
-    token = jwt.sign({ id: userlogin._id }, 'secret_admin');
+    token = jwt.sign({ id: userlogin._id },'secret_admin');
 
      res.json({ "token":token,"role":userlogin.role });
             // res.json(` ${token} ${userlogin.role }`);
