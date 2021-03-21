@@ -11,6 +11,7 @@ exports.getmenu=async(req, res,next) => {
     } catch (error) {
         res.status(400).send({error, success:false})
     }
+    
     // Menu.find({}, function(err, menu) {
     //     if (err) throw err;
     //     res.send(menu);

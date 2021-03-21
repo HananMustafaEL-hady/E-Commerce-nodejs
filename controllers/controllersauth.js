@@ -7,7 +7,7 @@ exports.postuser=(req, res) => {
         password=req.body.password;
        
         const hash =  bcrypt.hash(password, 8);
-        const user =  Admin.create({ 
+        const user =  User.create({ 
             firstName:req.body.firstName, 
             lastName:req.body.lastName,
             email:req.body.email,
