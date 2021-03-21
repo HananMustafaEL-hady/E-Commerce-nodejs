@@ -7,7 +7,7 @@ const User = require('../models/user');
 const adminAuth=require('../middleware/authAdmin');
 const admincontrollers=require('../controllers/controllersauth');
 ///////endpoint only
-routeradmin.post('/', admincontrollers,(req, res) => {
+routeradmin.post('/', admincontrollers,async(req, res) => {
     try {
         console.log(req.body);
 
@@ -15,7 +15,7 @@ routeradmin.post('/', admincontrollers,(req, res) => {
         password=req.body.password;
        
         const hash =  bcrypt.hash(password, 8);
-        const user =  Admin.create({ 
+        const user = await Admin.create({ 
             firstName:req.body.firstName, 
             lastName:req.body.lastName,
             email:req.body.email,
