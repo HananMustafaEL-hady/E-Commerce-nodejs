@@ -1,19 +1,15 @@
 const express = require("express");
-const routerUser = require("./routers/users");
-const routerMenu = require("./routers/menu");
-const routeradmin = require("./routers/admin");
-const routerMenuOffers = require("./routers/menuOffers");
-const routercart = require("./routers/cart");
-const routerimg = require("./routers/imguser");
-const routerOrder = require("./routers/order");
+
 var bodyParser = require("body-parser");
 require("./DB-connection");
 const cors = require("cors");
-
 const app = express();
-app.use(express.static("public"));
-app.use(bodyParser.json({ extended: true }));
-app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.json({ extended: true }));
+// app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static('public'));
+app.use(express.json());
+app.use(cors());
 
 // app.use((options) => options.AllowAnyOrigin());
 
@@ -32,6 +28,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 
+
+const routerUser = require("./routers/users");
+const routerMenu = require("./routers/menu");
+const routeradmin = require("./routers/admin");
+const routerMenuOffers = require("./routers/menuOffers");
+const routercart = require("./routers/cart");
+const routerimg = require("./routers/imguser");
+const routerOrder = require("./routers/order");
+
 app.use("/cart", routercart);
 app.use("/users", routerUser);
 app.use("/menu", routerMenu);
@@ -39,7 +44,6 @@ app.use("/menuOffers", routerMenuOffers);
 app.use("/admin", routeradmin);
 app.use("/upload", routerimg);
 app.use("/order", routerOrder);
-app.use(cors());
 
 
 
