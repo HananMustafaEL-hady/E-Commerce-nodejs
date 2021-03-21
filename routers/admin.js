@@ -3,9 +3,7 @@ const Admin = require('../models/user');
 const routeradmin = new express.Router();
 var jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const User = require('../models/user');
-const adminAuth=require('../middleware/authAdmin');
-const admincontrollers=require('../controllers/controllersauth');
+
 ///////endpoint only
 routeradmin.post('/', async(req, res) => {
     console.log(req.body);
@@ -20,7 +18,7 @@ routeradmin.post('/', async(req, res) => {
         phone=req.body.phone;
 
         const hash = await bcrypt.hash(password, 7);
-        const user = await User.create({ 
+        const user = await Admin.create({ 
             firstName:firstName, 
             lastName:lastName,
             email:email,
@@ -33,10 +31,15 @@ routeradmin.post('/', async(req, res) => {
        res.statusCode = 201;
         res.send(user);
     } catch (err) {
-        res.statusCode = 422;
+        // res.statusCode = 422;
         res.send(err);
     }
 });
+
+
+
+const adminAuth=require('../middleware/authAdmin');
+const admincontrollers=require('../controllers/controllersauth');
 //get user
 routeradmin.get('/',adminAuth,admincontrollers.getuser);
 
