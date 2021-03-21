@@ -22,9 +22,9 @@ const mongoose = require('mongoose');
 
 // mongoose.connect(url, {useNewUrlParser: true});
 
-mongoose.connect(process.env.URL_DB ||url_node,
+mongoose.connect(process.env.PORT ||url_node,
  {
-    dbName : 'DB',
+   // dbName : 'DB',
 
      useNewUrlParser: true,
      useCreateIndex:true,
@@ -35,6 +35,10 @@ mongoose.connect(process.env.URL_DB ||url_node,
          //app.listen(3000, () => {
     //     console.log("server listening on port 3000");
     // });
+        console.log({result})
         console.log("connected to DB"+result)}).
-    catch((err)=>console.log("Cannt connect to atlas"))
+    catch((err)=>{
+        console.log(process.env.PORT, url_node)
+        console.log("Cannt connect to atlas")
+    })
 
