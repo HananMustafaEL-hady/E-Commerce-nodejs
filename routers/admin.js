@@ -57,7 +57,7 @@ routeradmin.patch('/phone/',adminAuth ,admincontrollers.patchphone);
 
     // edit admin password
  routeradmin.patch('/password/',adminAuth ,admincontrollers.patchpassword)
-
+ routeradmin.get('/user:id',adminAuth,admincontrollers.getuserorder);
 
 
  routeradmin.post('/login/', async(req, res) => {
@@ -81,5 +81,10 @@ routeradmin.patch('/phone/',adminAuth ,admincontrollers.patchphone);
     }
   
 });
+
+
+
+
+
 
 module.exports = routeradmin;

@@ -97,6 +97,13 @@ exports.patchpassword=(req, res) => {
      }
 
 
+     exports.getuserorder=async (req, res) => { 
+        const user =  await User.findOne({ _id: req.params},{password:0});
+         res.send(user);
+        }
+        
+
+
 
 
 
