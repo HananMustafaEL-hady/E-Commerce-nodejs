@@ -13,18 +13,18 @@ app.use(cors());
 
 // app.use((options) => options.AllowAnyOrigin());
 
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT ,DELETE");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Access-Control-Allow-Origin: *",
-"Access-Control-Allow-Origin:http",
+// app.use(function (req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Methods", "GET, POST, PUT ,DELETE");
+//   res.header(
+//     "Access-Control-Allow-Headers",
+//     "Access-Control-Allow-Origin: *",
+// "Access-Control-Allow-Origin:http",
 
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
-});
+   
+//   );
+//   next();
+// });
 
 
 
