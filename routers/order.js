@@ -26,7 +26,7 @@ routerOrder.get('/user',UserAuth, async(req, res) => {
 });
 //  Return the all Orders
 
-routerOrder.get('/admin', adminAuth,async(req, res) => {
+routerOrder.get('/admin',async(req, res) => {
       const order = await Order.find({});
         res.statusCode = 201;
         res.send(order);
