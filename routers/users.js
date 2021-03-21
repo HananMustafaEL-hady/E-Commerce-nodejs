@@ -50,7 +50,7 @@ routerUser.patch('/phone/',UserAuth,admincontrollers.patchphone);
 routerUser.patch('/password/',UserAuth,admincontrollers.patchpassword);
 
 
-routeradmin.get('/user:id',async (req, res) => { 
+routerUser.get('/:id',async (req, res) => { 
     const user =  await User.findOne({ _id: req.params},{password:0});
      res.send(user);
     }
