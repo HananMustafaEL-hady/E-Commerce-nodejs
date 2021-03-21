@@ -7,7 +7,32 @@ const User = require('../models/user');
 const adminAuth=require('../middleware/authAdmin');
 const admincontrollers=require('../controllers/controllersauth');
 ///////endpoint only
-routeradmin.post('/', admincontrollers.postuser);
+routeradmin.post('/', admincontrollers,(req, res) => {
+    try {
+        console.log(req.body);
+
+
+        password=req.body.password;
+       
+        const hash =  bcrypt.hash(password, 8);
+        const user =  Admin.create({ 
+            firstName:req.body.firstName, 
+            lastName:req.body.lastName,
+            email:req.body.email,
+            password: hash,
+             address:req.body.address
+             ,phone:req.body.phone
+             ,gender:req.body.gender
+             ,role:"admin"});
+
+       res.statusCode = 201;
+        res.send(user);
+    } catch (err) {
+        res.statusCode = 422;
+        res.send(err);
+    }
+    });
+
 //get user
 routeradmin.get('/',adminAuth,admincontrollers.getuser);
 
