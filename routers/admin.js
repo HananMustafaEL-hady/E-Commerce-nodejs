@@ -50,13 +50,13 @@ routeradmin.delete('/', adminAuth,admincontrollers.deleteuser);
 routeradmin.patch('/name/',adminAuth ,admincontrollers.patchname);
     
     //5 edit admin address
-routeradmin.patch('/address',adminAuth ,admincontrollers.patchaddress);
+routeradmin.patch('/address/',adminAuth ,admincontrollers.patchaddress);
     
     // edit admin phone    
-routeradmin.patch('/phone',adminAuth ,admincontrollers.patchphone);
+routeradmin.patch('/phone/',adminAuth ,admincontrollers.patchphone);
 
     // edit admin password
- routeradmin.patch('/password',adminAuth ,admincontrollers.patchpassword)
+ routeradmin.patch('/password/',adminAuth ,admincontrollers.patchpassword)
 
 
 
