@@ -33,7 +33,7 @@ client.connect(err => {
 
 // mongoose.connect(url, {useNewUrlParser: true});
 
-mongoose.connect(process.env.MONGO_DB ||MONGO_DB,
+mongoose.connect(process.env.MONGO_DB ||url_node, 
  {
    // dbName : 'DB',
 
