@@ -43,6 +43,20 @@ exports.patchdescription=(req, res) => {
 }
 
 
+
+exports.patchaddress=(req, res) => {
+    const { id } = req.params;
+    const {address} = req.body;
+     Menu.findOneAndUpdate({ _id: id}, {  address: address }, function(err, menu) {
+            if (err) return handleError(err);
+            console.log(menu);
+
+            res.send(menu);
+        });
+}
+
+
+
 exports.patchPrice=(req, res) => {
     const { id } = req.params;
     const {price} = req.body;
