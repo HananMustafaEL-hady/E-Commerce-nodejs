@@ -10,8 +10,6 @@ const Orderschema = new mongoose.Schema({
   },
   items: [
     {
-      
-      
       menuid:{
 
         type: mongoose.Schema.Types.ObjectId,
@@ -22,7 +20,6 @@ const Orderschema = new mongoose.Schema({
         type:Number,
         default:1
       }
-    
     
     }
     //{
