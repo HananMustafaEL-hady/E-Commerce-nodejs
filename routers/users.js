@@ -94,8 +94,8 @@ routerUser.patch('/address/', async(req, res) => {
 
     try {
         // const { id } = req.params;
-        const address = req.body.address;
-        console.log(address)
+        const{ address }= req.body.address;
+        console.log(address);
 
      //   const address = req.body.address;
 
