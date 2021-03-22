@@ -23,6 +23,7 @@ routerOrder.post('/',UserAuth, async(req, res) => {
 routerOrder.get('/user',UserAuth, async(req, res) => {
 
         const order = await Order.find({userid: req.signedata.id }).populate('items._id');
+        console.log(order);
         res.statusCode = 201;
         res.send(order);
 });
