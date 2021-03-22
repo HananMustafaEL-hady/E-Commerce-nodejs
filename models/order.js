@@ -9,6 +9,25 @@ const Orderschema = new mongoose.Schema({
     ref: "user",
   },
   items: [
+    {
+      
+      
+      _id:{
+
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "menuid",
+
+      },
+      count:{
+        type:Number,
+        default:1
+      }
+    
+    
+    
+    
+    
+    }
     //{
     //   quantity: {
     //     type: Number,
