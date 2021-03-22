@@ -14,7 +14,6 @@ routerOrder.post('/',UserAuth, async(req, res) => {
   
     const items = req.body;
     console.log({items})
-
     const order = await Order.create({ userid: req.signedata.id,items:items});
     console.log(order);
      res.json({ order});
@@ -29,7 +28,9 @@ routerOrder.get('/user',UserAuth, async(req, res) => {
         const orderwithout = await Order.find({userid:req.signedata.id });
 
         //console.log(order[1].items);       
+
         // console.log(orderwithout[1].items);
+
         res.statusCode = 201;
         res.send(order);
 });
