@@ -152,8 +152,8 @@ exports.deletecart=(req, res) => {
 
 
 exports.deleteAllcart=(req, res) => {
-    Cart.delete({userid:req.signedata.id})
-    res.send("dddd");
+    Cart.remove({userid:req.signedata.id})
+    res.send("Delete");
 }
 
 
