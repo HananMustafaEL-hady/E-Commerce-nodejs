@@ -11,13 +11,13 @@ routerMenu.get('/', controllersMenu.getmenuoffers);
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //9 Edit menu 
 
-routerMenu.patch('/description/:id', adminAuth,controllersMenu.patchdescription);
+routerMenu.patch('/description/:id', adminAuth,controllersMenu.patchdescriptionoffers);
 
-routerMenu.patch('/name/:id', adminAuth,controllersMenu.patchName);
+routerMenu.patch('/name/:id', adminAuth,controllersMenu.patchNameoffers);
 
-routerMenu.patch('/price/:id' ,adminAuth,controllersMenu.patchPrice);
+routerMenu.patch('/price/:id' ,adminAuth,controllersMenu.patchPriceoffers);
 
-routerMenu.delete('/:id',adminAuth,controllersMenu.deleteMenu);
+routerMenu.delete('/:id',adminAuth,controllersMenu.deleteMenuoffers);
 
 
 

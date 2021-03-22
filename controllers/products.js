@@ -159,3 +159,62 @@ exports.getmenuoffers=async(req, res,next) => {
     }
     
 }
+
+
+
+
+exports.patchdescriptionofffers=(req, res) => {
+    const { id } = req.params;
+    const {description} = req.body;
+    MenuOffers.findOneAndUpdate({ _id: id}, {  description: description }, function(err, menu) {
+            if (err) return handleError(err);
+            console.log(menu);
+
+            res.send(menu);
+        });
+}
+
+
+
+exports.patchaddressoffers=(req, res) => {
+    const { id } = req.params;
+    const {address} = req.body;
+    MenuOffers.findOneAndUpdate({ _id: id}, {  address: address }, function(err, menu) {
+            if (err) return handleError(err);
+            console.log(menu);
+
+            res.send(menu);
+        });
+
+
+}
+
+
+
+exports.patchPriceoffers=(req, res) => {
+    const { id } = req.params;
+    const {price} = req.body;
+   
+    MenuOffers.findOneAndUpdate({ _id: id}, {  price: price }, function(err, menu) {
+            if (err) return handleError(err);
+            console.log(menu);
+
+            res.send(menu);
+        });
+    
+}
+
+
+exports.patchNameoffers=(req, res) => {
+    const { id } = req.params;
+    const {name} = req.body;
+    MenuOffers.findOneAndUpdate({ _id: id}, {  name: name }, function(err, menu) {
+        if (err) return handleError(err);
+        console.log(menu);
+
+        res.send(menu);
+    });
+
+   
+
+}
