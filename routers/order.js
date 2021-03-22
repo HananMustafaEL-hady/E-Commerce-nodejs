@@ -6,6 +6,7 @@ const routerOrder = new express.Router();
 const UserAuth=require('../middleware/authUser');
 const adminAuth=require('../middleware/authAdmin');
 const authUser = require('../middleware/authUser');
+const routerUser = require('./users');
 Menu =require("../models/menu");
 
 
@@ -65,10 +66,7 @@ routerOrder.patch('/s/:id', adminAuth,(req, res) => {
 routerOrder.delete('/:id',adminAuth ,(req, res) => {
     const { id } = req.params;
     
-    Order.deleteOne({ _id: id, userid:req.signedata.id}, function(err) {
-        if (err) return handleError(err);
-        else res.send({ success: true })
-    });
+    Order.deleteOne({ _id: id, userid:req.signedata.id})
 
 })
 
@@ -91,5 +89,13 @@ routerOrder.delete('/user/:id' ,async(req, res) => {
     }
 
 })
+
+routerOrder.patch('/price',async(req, res) => {
+    const {total_price  }= req.params;
+    console.log(total_price);
+    const orderuser= await Order.findOneAndUpdate({total_price: total_price});
+    res.send(orderuser);
+}
+)
 
 module.exports = routerOrder;
