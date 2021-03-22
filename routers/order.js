@@ -12,6 +12,7 @@ Menu =require("../models/menu");
 routerOrder.post('/',UserAuth, async(req, res) => {
   
     const items = req.body;
+    console.log({items})
     const order = await Order.create({ userid: req.signedata.id,items:items});
      res.json({ order});
        
