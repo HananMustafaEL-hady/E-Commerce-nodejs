@@ -68,17 +68,17 @@ routerUser.get('/',UserAuth,admincontrollers.getuser);
 //4 delete admin
 routerUser.delete('/', UserAuth,admincontrollers.deleteuser);
  
-//5  edit admin name 
-routerUser.patch('/name/',UserAuth,admincontrollers.patchname);
+// //5  edit admin name 
+// routerUser.patch('/name/',UserAuth,admincontrollers.patchname);
     
-    //5 edit admin address
-routerUser.patch('/address/',UserAuth,admincontrollers.patchaddress);
+//     //5 edit admin address
+// routerUser.patch('/address/',UserAuth,admincontrollers.patchaddress);
     
-    // edit admin phone    
-routerUser.patch('/phone/',UserAuth,admincontrollers.patchphone);
+//     // edit admin phone    
+// routerUser.patch('/phone/',UserAuth,admincontrollers.patchphone);
 
-    // edit admin password
-routerUser.patch('/password/',UserAuth,admincontrollers.patchpassword);
+//     // edit admin password
+// routerUser.patch('/password/',UserAuth,admincontrollers.patchpassword);
 
 
 routerUser.get('/:id',async (req, res) => { 
@@ -88,6 +88,30 @@ routerUser.get('/:id',async (req, res) => {
     }
 )
 
+
+
+routerUser.patch('/address/', async(req, res) => {
+
+    try {
+        // const { id } = req.params;
+        const address = req.body.usrename;
+     //   const address = req.body.address;
+
+        const { authorization } = req.headers;
+        const Data = jwt.verify(authorization, 'secret_sign');
+        const user = await User.findOneAndUpdate({
+            _id: Data.id,
+        }, { address: address}, function(err, user) {
+            if (err) return handleError(err);
+
+            res.send(`${user} user was edited successfully`);
+        })
+        res.send(user);
+    } catch (err) {
+        res.statusCode = 401;
+        res.json({ success: false })
+    }
+})
 
 
  module.exports = routerUser;
