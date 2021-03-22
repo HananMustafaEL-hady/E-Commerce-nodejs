@@ -116,10 +116,8 @@ exports.postcart=(req, res) => {
 
 
 exports.getcart=(req, res) => {
-   const cart= Cart.find({userid:req.signedata.id})
-    .populate('menu')
-    res.send(cart);
-
+   const cart= Cart.find({userid:req.signedata.id}).populate('menu');
+   res.send(cart);
 }
 
 
