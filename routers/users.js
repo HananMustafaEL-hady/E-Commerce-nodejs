@@ -103,6 +103,7 @@ routerUser.patch('/address/', async(req, res) => {
         console.log(Data);
         const user = await User.findOneAndUpdate({ _id: Data.id},{address:address})
       //  res.send(user);
+      console.log(user);
       res.status(200).json(user);
 
     } catch (err) {
