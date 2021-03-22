@@ -12,8 +12,13 @@ controllersMenu=require('../controllers/products');
 
 routercart.post('/', UserAuth,controllersMenu.postcart);
 //7 Return the carts of specific user 
-routercart.get('/', UserAuth,controllersMenu.getcart);
-
+// routercart.get('/', UserAuth,controllersMenu.getcart);
+routercart.get('/', UserAuth,(req, res) => {
+    const cart= Cart.find({userid:req.signedata.id}).populate('menu');
+    //const cart= Cart.find({userid:req.signedata.id});
+ console.log(cart);
+    res.send({cart});
+ })
 //9 Edit  cart count
 
 routercart.patch('/:id', UserAuth,controllersMenu.patchcount);
@@ -21,6 +26,8 @@ routercart.patch('/:id', UserAuth,controllersMenu.patchcount);
 //10 delete cart 
 routercart.delete('/:id', UserAuth,controllersMenu.deletecart);
 routercart.delete('/',UserAuth,controllersMenu.deleteAllcart);
+
+
 module.exports = routercart;
 
 
