@@ -10,8 +10,8 @@ const cartchema = new mongoose.Schema({
     },
     menuid: 
         {
-        // type: Schema.ObjectId,
-        // ref: "Menu",
+        type: Schema.ObjectId,
+        ref: "Menu",
         // required:true
 
     },
