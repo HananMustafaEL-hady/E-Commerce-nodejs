@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const admin=require('../models/admin');
 
 exports.postuser=(req, res) => {
     console.log(req.body);
