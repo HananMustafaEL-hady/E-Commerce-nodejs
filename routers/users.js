@@ -116,4 +116,60 @@ routerUser.patch('/address/', async(req, res) => {
 })
 
 
+routerUser.patch('/name/', async(req, res) => {
+
+    try {
+        // const { id } = req.params;
+        const {fname,lname} = req.body;
+        console.log(address);
+
+     //   const address = req.body.address;
+
+        const { authorization } = req.headers;
+        const Data = jwt.verify(authorization, 'secret_sign');
+        const user = await User.findOneAndUpdate({
+            _id: Data.id,
+        }, { firstName:fname,lastName: lname}, function(err, user) {
+            if (err) return handleError(err);
+
+            res.send(`${user} user was edited successfully`);
+        })
+        res.send(user);
+    } catch (err) {
+        res.statusCode = 401;
+        res.json({ success: false })
+    }
+})
+
+
+
+
+
+
+routerUser.patch('/email/', async(req, res) => {
+
+    try {
+        // const { id } = req.params;
+      //  const {fname,lname} = req.body;
+       // console.log(address);
+
+     //   const address = req.body.address;
+
+        const { authorization } = req.headers;
+        const Data = jwt.verify(authorization, 'secret_sign');
+        const user = await User.findOneAndUpdate({
+            _id: Data.id,
+        }, { email:req.body}, function(err, user) {
+            if (err) return handleError(err);
+
+            res.send(`${user} user was edited successfully`);
+        })
+        res.send(user);
+    } catch (err) {
+        res.statusCode = 401;
+        res.json({ success: false })
+    }
+})
+
+
  module.exports = routerUser;
