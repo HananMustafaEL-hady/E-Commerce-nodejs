@@ -75,7 +75,7 @@ routerOrder.delete('/:id',adminAuth ,(req, res) => {
 
 
 //10 delete order
-routerOrder.delete('/user/:id',authUser ,(req, res) => {
+routerOrder.delete('/user/:id' ,(req, res) => {
     const { id } = req.params;
     console.log(id);
     console.log(orderuser.order_status);
