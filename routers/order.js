@@ -22,7 +22,7 @@ routerOrder.post('/',UserAuth, async(req, res) => {
 //  Return the Order of specific user 
 routerOrder.get('/user',UserAuth, async(req, res) => {
 
-        const order = await Order.find({userid:req.signedata.id }).populate('items._id');
+        const order = await Order.find({userid:req.signedata.id }).populate('items.menuid');
         const orderwithout = await Order.find({userid:req.signedata.id });
 
         console.log(order[1]?.items);       
