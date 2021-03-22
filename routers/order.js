@@ -10,12 +10,12 @@ Menu =require("../models/menu");
 
 
 //6 Create new order
-routerOrder.post('/:t',UserAuth, async(req, res) => {
+routerOrder.post('/',UserAuth, async(req, res) => {
   
     const items = req.body;
     console.log({items})
 
-    const order = await Order.create({ userid: req.signedata.id,items:items,total_price:req.params});
+    const order = await Order.create({ userid: req.signedata.id,items:items});
     console.log(order);
      res.json({ order});
 
@@ -27,6 +27,7 @@ routerOrder.get('/user',UserAuth, async(req, res) => {
 
         const order = await Order.find({userid:req.signedata.id }).populate('items.menuid');
         const orderwithout = await Order.find({userid:req.signedata.id });
+
         //console.log(order[1].items);       
         // console.log(orderwithout[1].items);
         res.statusCode = 201;
