@@ -116,9 +116,7 @@ exports.postcart=(req, res) => {
 
 
 exports.getcart=(req, res) => {
-//    const cart= Cart.find({userid:req.signedata.id}).populate('menu');
-   const cart= Cart.find({userid:req.signedata.id});
-console.log(cart);
+   const cart= Cart.find({userid:req.signedata.id})
    res.send(cart);
 }
 
@@ -133,6 +131,8 @@ exports.patchcount=(req, res) => {
 
         res.send({ success: true })
     });
+
+
 }
 
 
