@@ -102,11 +102,18 @@ exports.deleteMenu=(req, res) => {
 
 
 ///////////////////////////////////////Cart/////////////////////////////////////////
+// exports.postcart=(req, res) => {
+//     console.log(req.body);
+//     const {menuid,count} = req.body;
+    
+//     const cart = Cart.create({ userid:req.signedata.id,menuid:menuid,count:count});
+//     console.log(cart);
+//     res.send(cart);
+// }
 exports.postcart=(req, res) => {
     console.log(req.body);
-    const {menuid,count} = req.body;
-    
-    const cart = Cart.create({ userid:req.signedata.id,menuid:menuid,count:count});
+    const {menuid,count,price,menuname} = req.body;
+    const cart = Cart.create({ userid:req.signedata.id,menuid:menuid,count:count,price:price,menuname:menuname});
     console.log(cart);
     res.send(cart);
 

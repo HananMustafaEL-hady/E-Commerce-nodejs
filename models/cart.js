@@ -21,6 +21,8 @@ const cartchema = new mongoose.Schema({
         required:true
     },
     
+    price:{type:Number},
+    menuname:{type:String},
     
     
 

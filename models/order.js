@@ -60,6 +60,13 @@ const Orderschema = new mongoose.Schema({
     enum: ["accepted ", "pending", "rejected"],
     default: "pending",
   },
+
+
+  total_price:{
+    type:Number
+  }
+
+  
 });
 
 const order = mongoose.model("order", Orderschema);
