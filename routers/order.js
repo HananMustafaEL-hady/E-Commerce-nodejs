@@ -25,8 +25,9 @@ routerOrder.get('/user',UserAuth, async(req, res) => {
         const order = await Order.find({userid:req.signedata.id }).populate('items._id');
         const orderwithout = await Order.find({userid:req.signedata.id });
 
-        console.log(order[1].items);       
-         console.log(orderwithout[1].items);
+        console.log(order[1]?.items);       
+
+         console.log(orderwithout[1]?.items);
 
 
         res.statusCode = 201;
