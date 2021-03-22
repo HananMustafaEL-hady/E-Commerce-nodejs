@@ -78,8 +78,9 @@ routerOrder.delete('/:id',adminAuth ,(req, res) => {
 routerOrder.delete('/user/:id' ,async(req, res) => {
     const id  = req.params;
     console.log(id);
-    console.log(orderuser.order_status);
     const orderuser= await  Order.find({_id: id});
+    console.log(orderuser.order_status);
+
     if(orderuser.order_status!="accepted") {
         await Order.deleteOne({_id:id})
         res.send(id);
