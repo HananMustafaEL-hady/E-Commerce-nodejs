@@ -93,7 +93,7 @@ routerUser.get('/:id',async (req, res) => {
 routerUser.patch('/address/', async(req, res) => {
 
     try {
-        const address = req.body;
+        const {address }= req.body;
         console.log(address);
 
         const { authorization } = req.headers;
@@ -101,7 +101,7 @@ routerUser.patch('/address/', async(req, res) => {
 
         const Data = jwt.verify(authorization, 'secret_sign');
         console.log(Data);
-        const user = await User.findOneAndUpdate({ _id: Data.id},{address})
+        const user = await User.findOneAndUpdate({ _id: Data.id},{address:address})
       //  res.send(user);
       res.status(200).json(user);
 
