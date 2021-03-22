@@ -224,7 +224,7 @@ exports.deleteMenuoffers=(req, res) => {
     const { id } = req.params;
 
 
- Menu.deleteOne({ _id:id}, function(err,menu) {
+    menuoffers.deleteOne({ _id:id}, function(err,menu) {
         if (err) throw err;
         else res.send({ success: true })
         console.log(req.params);
