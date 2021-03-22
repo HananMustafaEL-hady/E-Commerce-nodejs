@@ -14,8 +14,8 @@ routercart.post('/', UserAuth,controllersMenu.postcart);
 //7 Return the carts of specific user 
 // routercart.get('/', UserAuth,controllersMenu.getcart);
 routercart.get('/', UserAuth,(req, res) => {
-    const cart= Cart.find({userid:req.signedata.id}).populate('menu');
-    //const cart= Cart.find({userid:req.signedata.id});
+   // const cart= Cart.find({userid:req.signedata.id}).populate('menu');
+    const cart= Cart.find({userid:req.signedata.id});
  console.log(cart);
     res.send({cart});
  })
