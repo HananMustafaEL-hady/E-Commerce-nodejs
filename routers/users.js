@@ -103,7 +103,6 @@ routerUser.patch('/address/', async(req, res) => {
         console.log(Data);
         const user = await User.findOneAndUpdate({ _id: Data.id},{address:address})
       //  res.send(user);
-      console.log("fgkjgj");
       console.log(user);
       res.status(200).json(user);
 
@@ -119,20 +118,15 @@ routerUser.patch('/name/', async(req, res) => {
     try {
         // const { id } = req.params;
         const {fname,lname} = req.body;
-        console.log(address);
+        console.log(req.body);
+console.log(fname ,lname);
 
      //   const address = req.body.address;
 
         const { authorization } = req.headers;
         const Data = jwt.verify(authorization, 'secret_sign');
-        const user = await User.findOneAndUpdate({
-            _id: Data.id,
-        }, { firstName:fname,lastName: lname}, function(err, user) {
-            if (err) return handleError(err);
-
-            res.send(`${user} user was edited successfully`);
-        })
-        res.send(user);
+        const user = await User.findOneAndUpdate({_id: Data.id},{ firstName:fname,lastName: lname})
+        res.status(200).json(user);
     } catch (err) {
         res.statusCode = 401;
         res.json({ success: false })
