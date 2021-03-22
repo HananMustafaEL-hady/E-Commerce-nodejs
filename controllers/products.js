@@ -116,7 +116,9 @@ exports.postcart=(req, res) => {
 
 
 exports.getcart=(req, res) => {
-   const cart= Cart.find({userid:req.signedata.id}).populate('menu');
+//    const cart= Cart.find({userid:req.signedata.id}).populate('menu');
+   const cart= Cart.find({userid:req.signedata.id});
+
    res.send(cart);
 }
 
