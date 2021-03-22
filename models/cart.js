@@ -23,9 +23,6 @@ const cartchema = new mongoose.Schema({
     
     price:{type:Number},
     menuname:{type:String},
-    
-    
-
 });
 
 const  cart = mongoose.model('cart', cartchema);

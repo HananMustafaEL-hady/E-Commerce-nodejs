@@ -12,10 +12,10 @@ Menu =require("../models/menu");
 //6 Create new order
 routerOrder.post('/',UserAuth, async(req, res) => {
   
-    const items = req.body;
+    const {items ,total_price2}= req.body;
     console.log({items})
 
-    const order = await Order.create({ userid: req.signedata.id,items:items});
+    const order = await Order.create({ userid: req.signedata.id,items:items,total_price:total_price2});
     console.log(order);
      res.json({ order});
 
