@@ -20,7 +20,9 @@ routercart.patch('/:id', UserAuth,controllersMenu.patchcount);
 
 //10 delete cart 
 routercart.delete('/:id', UserAuth,controllersMenu.deletecart);
+
 routercart.delete('/',UserAuth,controllersMenu.deleteAllcart);
+
 module.exports = routercart;
 
 
