@@ -116,8 +116,13 @@ exports.postcart=(req, res) => {
 
 
 exports.getcart=(req, res) => {
-   cart= Cart.find({userid:req.signedata.id}).populate('Menu');
-   res.send(cart);   
+    Cart.find({userid:req.signedata.id})
+    .populate('Menu')
+    .exec(function (err, doc) {
+      if (err) return handleError(err);
+      res.send(doc);
+   })
+
 }
 
 
