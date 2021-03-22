@@ -152,8 +152,13 @@ exports.deletecart=(req, res) => {
 
 
 exports.deleteAllcart=(req, res) => {
-    Cart.deleteMany({userid:req.signedata.id})
-    res.send("Delete");
+    Cart.deleteMany({userid:req.signedata.id}, function(err, result) {
+        if (err) {
+          res.send(err);
+        } else {
+          res.send(result);
+        }
+      });
 }
 
 
