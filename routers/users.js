@@ -142,22 +142,25 @@ console.log(fname ,lname);
 routerUser.patch('/email/', async(req, res) => {
 
     try {
-       
-        const { authorization } = req.headers;
-        const Data = jwt.verify(authorization, 'secret_sign');
-        const user = await User.findOneAndUpdate({
-            _id: Data.id,
-        }, { email:req.body}, function(err, user) {
-            if (err) return handleError(err);
+        const {email }= req.body;
+        console.log(email);
 
-            res.send(`${user} user was edited successfully`);
-        })
-        res.send(user);
+        const { authorization } = req.headers;
+        console.log(authorization)
+
+        const Data = jwt.verify(authorization, 'secret_sign');
+        console.log(Data);
+        const user = await User.findOneAndUpdate({ _id: Data.id},{email:email})
+      //  res.send(user);
+      console.log(user);
+      res.status(200).json(user);
+
     } catch (err) {
-        res.statusCode = 401;
-        res.json({ success: false })
+        res.status(400).json({ success: false })
     }
-})
+
+}
+)
 
 
  module.exports = routerUser;
