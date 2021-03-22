@@ -80,7 +80,7 @@ routerOrder.delete('/user/:id',authUser ,(req, res) => {
     console.log(id);
     const orderuser=Order.find({_id: id});
     if(orderuser.order_status!="accepted") {
-        Order.deleteOne({ _id: id, userid:req.signedata.id});
+        Order.deleteOne({ _id: id});
         res.send("true","id");
 
     }
