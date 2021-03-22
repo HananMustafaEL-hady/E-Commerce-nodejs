@@ -163,7 +163,7 @@ exports.getmenuoffers=async(req, res,next) => {
 
 
 
-exports.patchdescriptionofffers=(req, res) => {
+exports.patchdescriptionoffers=(req, res) => {
     const { id } = req.params;
     const {description} = req.body;
     MenuOffers.findOneAndUpdate({ _id: id}, {  description: description }, function(err, menu) {
@@ -216,5 +216,20 @@ exports.patchNameoffers=(req, res) => {
     });
 
    
+
+}
+
+exports.deleteMenuoffers=(req, res) => {
+    const { id } = req.params;
+
+
+ Menu.deleteOne({ _id:id}, function(err,menu) {
+        if (err) throw err;
+        else res.send({ success: true })
+        console.log(req.params);
+        console.log(req.params);
+
+    });
+
 
 }
