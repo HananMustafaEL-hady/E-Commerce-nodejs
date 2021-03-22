@@ -15,6 +15,7 @@ routercart.post('/', UserAuth,controllersMenu.postcart);
 // routercart.get('/', UserAuth,controllersMenu.getcart);
 routercart.get('/', UserAuth,(req, res) => {
    // const cart= Cart.find({userid:req.signedata.id}).populate('menu');
+   console.log(userid,req.signedata.id)
     const cart= Cart.find({userid:req.signedata.id});
  console.log(cart);
     res.send({cart});
