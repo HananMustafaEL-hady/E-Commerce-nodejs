@@ -5,6 +5,7 @@ const bcrypt = require('bcrypt');
 const routerOrder = new express.Router();
 const UserAuth=require('../middleware/authUser');
 const adminAuth=require('../middleware/authAdmin');
+const authUser = require('../middleware/authUser');
 Menu =require("../models/menu");
 
 
@@ -29,7 +30,7 @@ routerOrder.get('/user',UserAuth, async(req, res) => {
         //console.log(order[1].items);       
 
         // console.log(orderwithout[1].items);
-        
+
         res.statusCode = 201;
         res.send(order);
 });
@@ -68,6 +69,23 @@ routerOrder.delete('/:id',adminAuth ,(req, res) => {
         if (err) return handleError(err);
         else res.send({ success: true })
     });
+
+})
+
+
+
+//10 delete order
+routerOrder.delete('/user/:id',authUser ,(req, res) => {
+    const { id } = req.params;
+    const orderuser=Order.find({_id: id, userid:req.signedata.id});
+    if(orderuser.order_status!="accepted") {
+        Order.deleteOne({ _id: id, userid:req.signedata.id});
+        res.send("true");
+
+    }
+    else{
+        res.send("false");
+    }
 
 })
 
