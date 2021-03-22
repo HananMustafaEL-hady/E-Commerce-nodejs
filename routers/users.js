@@ -101,19 +101,12 @@ routerUser.patch('/address/', async(req, res) => {
 
         const Data = jwt.verify(authorization, 'secret_sign');
         console.log(Data);
-        const user = await User.findOneAndUpdate({ _id: Data.id}, 
-        {address: address}
-        
-        
-        , function(err, user) {
-            if (err) return err;
-            console.log(user);
-            res.send(`${user} user was edited successfully`);
-        })
+        const user = await User.findOneAndUpdate({ _id: Data.id},{address:"jamade"})
         res.send(user);
     } catch (err) {
         res.status(400).json({ success: false })
     }
+
 })
 
 
