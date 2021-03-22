@@ -1,6 +1,6 @@
 const Menu = require('../models/menu');
 const Cart = require('../models/cart');
-// const MenuOffers = require('../models/menuOffers');
+ const MenuOffers = require('../models/menuOffers');
 
 
 ///////////////////Menu////////////////////////////////////////////
@@ -12,14 +12,10 @@ exports.getmenu=async(req, res,next) => {
     } catch (error) {
         res.status(400).send({error, success:false})
     }
-
-    // Menu.find({}, function(err, menu) {
-    //     if (err) throw err;
-    //     res.send(menu);
-
-    // }).exec()
     
 }
+
+
 
 
 exports.postmenu=(req, res) => {
@@ -52,7 +48,7 @@ exports.patchaddress=(req, res) => {
             res.send(menu);
         });
 
-        
+
 }
 
 
@@ -152,3 +148,14 @@ exports.deletecart=(req, res) => {
 
 
 
+///////////////////////////////////////////////////////////////////////
+exports.getmenuoffers=async(req, res,next) => {
+    try {
+        let menus = await MenuOffers.find();
+        res.status(200).send(menus)
+        console.log(menus);
+    } catch (error) {
+        res.status(400).send({error, success:false})
+    }
+    
+}

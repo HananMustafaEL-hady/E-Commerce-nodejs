@@ -19,7 +19,6 @@ routerMenu.patch('/price/:id' ,adminAuth,controllersMenu.patchPrice);
 
 routerMenu.delete('/:id',adminAuth,controllersMenu.deleteMenu);
 
-module.exports = routerMenu;
 
 
 module.exports = routerMenu;
