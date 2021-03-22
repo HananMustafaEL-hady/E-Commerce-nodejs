@@ -34,5 +34,5 @@ size:{
 }
 );
 
-const menuoffers = mongoose.model('menu', menuoffersschema);
+const menuoffers = mongoose.model('menuoffers', menuoffersschema);
 module.exports = menuoffers;
