@@ -117,7 +117,7 @@ exports.postcart=(req, res) => {
 
 exports.getcart=(req, res) => {
     Cart.find({userid:req.signedata.id})
-    .populate('Menu')
+    .populate('MenuR')
     .exec(function (err, doc) {
       if (err) return handleError(err);
       res.send(doc);
@@ -151,11 +151,11 @@ exports.deletecart=(req, res) => {
 }
 
 
-exports.deleteAllcart=(req, res) => {
-    Cart.delete({userid:req.signedata.id}, function(err) {
-        if (err) return handleError(err);
-        else res.send({ success: true })});
-}
+// exports.deleteAllcart=(req, res) => {
+//     Cart.delete({userid:req.signedata.id}, function(err) {
+//         if (err) return handleError(err);
+//         else res.send({ success: true })});
+// }
 
 
 
