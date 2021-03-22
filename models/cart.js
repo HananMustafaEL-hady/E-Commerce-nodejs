@@ -8,7 +8,7 @@ const cartchema = new mongoose.Schema({
         // ref: "user",
         // required:true
     },
-    Menucart: 
+    menuid: 
         {
         // type: Schema.ObjectId,
         // ref: "Menu",

@@ -103,9 +103,10 @@ exports.deleteMenu=(req, res) => {
 
 ///////////////////////////////////////Cart/////////////////////////////////////////
 exports.postcart=(req, res) => {
-    const {Menucart,count} = req.body;
+    console.log(req.body);
+    const {menuid,count} = req.body;
     
-    const cart = Cart.create({ userid:req.signedata.id, Menucart:Menucart,count:count});
+    const cart = Cart.create({ userid:req.signedata.id,menuid:menuid,count:count});
     console.log(cart);
     res.send(cart);
 
