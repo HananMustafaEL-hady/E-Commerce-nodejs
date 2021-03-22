@@ -12,7 +12,7 @@ const Orderschema = new mongoose.Schema({
     {
       
       
-      _id:{
+      menuid:{
 
         type: mongoose.Schema.Types.ObjectId,
         ref: "menu",
@@ -22,9 +22,6 @@ const Orderschema = new mongoose.Schema({
         type:Number,
         default:1
       }
-    
-    
-    
     
     
     }
