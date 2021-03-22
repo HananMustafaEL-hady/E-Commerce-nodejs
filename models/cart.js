@@ -4,15 +4,15 @@ const MenuR=require('./menu');
 Schema = mongoose.Schema;
 const cartchema = new mongoose.Schema({
     userid: {
-        type:Schema.ObjectId,
-        ref: "user",
-        required:true
+        // type:Schema.ObjectId,
+        // ref: "user",
+        // required:true
     },
     Menucart: 
         {
-        type: Schema.ObjectId,
-        ref: "Menu",
-        required:true
+        // type: Schema.ObjectId,
+        // ref: "Menu",
+        // required:true
 
     },
    
