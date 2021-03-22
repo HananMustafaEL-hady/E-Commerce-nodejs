@@ -6,10 +6,41 @@ const bcrypt = require('bcrypt');
 const UserAuth=require('../middleware/authUser');
 const admincontrollers=require('../controllers/controllersauth');
 
-routerUser.post('/', admincontrollers.postuser);
 
 
+routerUser.post('/', async(req, res) => {
+    console.log(req.body);
+    try {
+
+        firstName=req.body.firstName;
+        lastName=req.body.lastName;
+        email=req.body.email;
+        password=req.body.password;
+        address=req.body.address;
+        gender=req.body.gender;
+        phone=req.body.phone;
+
+        const hash = await bcrypt.hash(password, 7);
+        const user = await User.create({ 
+            firstName:firstName, 
+            lastName:lastName,
+            email:email,
+            password: hash,
+             address:address
+             ,phone:phone
+             ,gender:gender
+             ,role:"user"});
+
+       res.statusCode = 201;
+        res.send(user);
+    } catch (err) {
+        res.statusCode = 422;
+        res.send(err);
+    }
+});
  //2 login user
+
+
 
  routerUser.post('/login', async(req, res) => {
     try {
