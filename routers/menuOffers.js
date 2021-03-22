@@ -4,7 +4,7 @@ const adminAuth=require('../middleware/authAdmin');
 ontrollersMenu=require('../controllers/products');
 
 //to add new menu by admin
-routerMenu.post('/', adminAuth,controllersMenu.postmenu);
+routerMenu.post('/', adminAuth,controllersMenu.postmenuoffers);
 
 //to get all
 routerMenu.get('/', controllersMenu.getmenuoffers);

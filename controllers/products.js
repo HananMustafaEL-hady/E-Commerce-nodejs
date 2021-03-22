@@ -1,6 +1,7 @@
 const Menu = require('../models/menu');
 const Cart = require('../models/cart');
  const MenuOffers = require('../models/menuOffers');
+const menuoffers = require('../models/menuOffers');
 
 
 ///////////////////Menu////////////////////////////////////////////
@@ -233,3 +234,10 @@ exports.deleteMenuoffers=(req, res) => {
 
 
 }
+
+exports.postmenuoffers=(req, res) => {
+    const { name, price, description } = req.body;
+   const menu =  menuoffers.create({ name:name, price:price, description:description });
+   console.log(menu);
+   res.send(menu);
+    }
