@@ -149,12 +149,7 @@ routerUser.patch('/name/', async(req, res) => {
 routerUser.patch('/email/', async(req, res) => {
 
     try {
-        // const { id } = req.params;
-      //  const {fname,lname} = req.body;
-       // console.log(address);
-
-     //   const address = req.body.address;
-
+       
         const { authorization } = req.headers;
         const Data = jwt.verify(authorization, 'secret_sign');
         const user = await User.findOneAndUpdate({
