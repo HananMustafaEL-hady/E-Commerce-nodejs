@@ -104,7 +104,7 @@ routerUser.patch('/address/', async(req, res) => {
         const user = await User.findOneAndUpdate({
             _id: Data.id,
         }, { address: address}, function(err, user) {
-            if (err) return handleError(err);
+            if (err) return err;
 
             res.send(`${user} user was edited successfully`);
         })
