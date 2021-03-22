@@ -155,7 +155,6 @@ exports.deleteAllcart=(req, res) => {
     Cart.delete({userid:req.signedata.id}, function(err) {
         if (err) return handleError(err);
         else res.send({ success: true })});
-
 }
 
 
