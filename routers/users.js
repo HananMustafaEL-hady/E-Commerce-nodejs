@@ -97,25 +97,22 @@ routerUser.patch('/address/', async(req, res) => {
         console.log(address);
 
         const { authorization } = req.headers;
-        const Data = jwt.verify(authorization, 'secret_sign');
-        const user = await User.findOneAndUpdate({
+        console.log(authorization)
 
-            _id: Data.id,
-            
-        }, 
-        
-        { address: address}
+        const Data = jwt.verify(authorization, 'secret_sign');
+        console.log(Data);
+        const user = await User.findOneAndUpdate({ _id: Data.id}, 
+        {address: address}
         
         
         , function(err, user) {
             if (err) return err;
-
+            console.log(user);
             res.send(`${user} user was edited successfully`);
         })
         res.send(user);
     } catch (err) {
-        res.statusCode = 401;
-        res.json({ success: false })
+        res.status(400).json({ success: false })
     }
 })
 
