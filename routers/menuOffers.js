@@ -7,7 +7,7 @@ ontrollersMenu=require('../controllers/products');
 routerMenu.post('/', adminAuth,controllersMenu.postmenu);
 
 //to get all
-routerMenu.get('/', controllersMenu.getmenu);
+routerMenu.get('/', controllersMenu.getmenuoffers);
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //9 Edit menu 
 
