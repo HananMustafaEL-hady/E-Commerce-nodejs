@@ -5,29 +5,22 @@ Schema = mongoose.Schema;
 const cartchema = new mongoose.Schema({
     userid: {
         type:Schema.ObjectId,
-        ref: "userR",
+        ref: "user",
         required:true
     },
-    Menucart: [
+    Menucart: 
         {
         type: Schema.ObjectId,
-        ref: "MenuR",
+        ref: "Menu",
         required:true
 
-    }],
+    },
    
     count:{
         type:Number,
         required:true
     },
-    menuName:{
-        type:String,
-     required:true
-    },
-    price:{
-        type:Number,
-        required:true
-    }
+    
     
 
 });
