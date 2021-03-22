@@ -116,6 +116,7 @@ routerUser.patch('/address/', async(req, res) => {
 routerUser.patch('/name/', async(req, res) => {
 
     try {
+        console.log("ddddd");
         // const { id } = req.params;
         const {fname,lname} = req.body;
         console.log(req.body);
