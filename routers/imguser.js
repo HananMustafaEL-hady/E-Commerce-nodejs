@@ -97,17 +97,17 @@ routerimg.get('/:id',async(req, res) => {
               err: "No files exist",
             });
           }
-          if (upload.contentType === "image/jpeg" || upload.contentType === "img/png") {
+         // if (upload.contentType === "image/jpeg" || upload.contentType === "img/png") {
             const readStream = gfs.createReadStream(upload.filename);
             readStream.pipe(res);
 
-          } else {
-            res.status(404).json({
+          //} else {
+         //   res.status(404).json({
               
-              err: "Not an image",
+            //  err: "Not an image",
               
-            });
-          }        
+         //   });
+        // }        
       }
 
   } catch (err) {
