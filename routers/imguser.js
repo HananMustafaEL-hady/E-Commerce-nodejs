@@ -74,8 +74,8 @@ routerimg.post("/:id",upload.single("upload"), async (req, res) => {
       upload: img_upload,
     });
      console.log(img);
-   let menu = await Menu.findOneAndUpdate({ _id:id}, { upload: img.upload });
-   console.log(menu);
+   //let menu = await Menu.findOneAndUpdate({ _id:id}, { upload: img.upload });
+  // console.log(menu);
     res.status(200).send(img);
   } catch (err) {
     res.status(500).send(err);
@@ -92,13 +92,13 @@ routerimg.get('/:id',async(req, res) => {
     console.log(id);
       if(Img.find({menuid:id})){
       
-          if (!file || file.length == 0) {
+          if (!upload || upload.length == 0) {
             return res.status(404).json({
               err: "No files exist",
             });
           }
-          if (file.contentType === "image/jpeg" || file.contentType === "img/png") {
-            const readStream = gfs.createReadStream(file.filename);
+          if (upload.contentType === "image/jpeg" || upload.contentType === "img/png") {
+            const readStream = gfs.createReadStream(upload.filename);
             readStream.pipe(res);
 
           } else {
