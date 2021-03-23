@@ -99,6 +99,7 @@ routerimg.get('/:id',async(req, res) => {
         //  }
          // if (upload.contentType === "image/jpeg" || upload.contentType === "img/png") {
             const readStream = gfs.createReadStream(upload.filename);
+            console.log(readStream);
             readStream.pipe(res);
 
           //} else {
