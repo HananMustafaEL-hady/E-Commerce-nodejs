@@ -16,6 +16,7 @@ const express = require("express");
 const app = express();
 app.use(express.static("public"));
 const adminAuth=require('../middleware/authAdmin');
+const userAuth=require('../middleware/authUser');
 
 const routerimg = new express.Router();
 // app.use(function (req, res, next) {
@@ -55,7 +56,7 @@ let storage = new GridFsStorage({
 });
 
 const upload = multer({ storage });
-routerimg.post("/", adminAuth,upload.single("upload"), async (req, res) => {
+routerimg.post("/", userAuth,upload.single("upload"), async (req, res) => {
   try {
 
     const img_upload = req.file;
@@ -78,13 +79,13 @@ routerimg.post("/", adminAuth,upload.single("upload"), async (req, res) => {
     res.status(500).send(err);
   }
 });
-routerimg.get('/', async(req, res) => {
+routerimg.get('/', userAuth,async(req, res) => {
   try {
      // const { id_params } = req.params;
-      const { authorization } = req.headers;
-      const Data = jwt.verify(authorization,'secret_admin');
+      // const { authorization } = req.headers;
+      // const Data = jwt.verify(authorization,'secret_admin');
     // img=Img.find({userid: Data.id });
-      if(Img.find({userid: Data.id })){
+      if(Img.find({userid:req.signedata.id})){
       //  gfs.files.findOne({ filename: req.params.filename }, (err, file) => {
           //check if files exist
           if (!file || file.length == 0) {
