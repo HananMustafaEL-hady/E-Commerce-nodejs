@@ -53,13 +53,15 @@ type:Number,
     //     default: 'Pending'
     //   },
 
-      confirmationCode: { 
-        type: String, 
-        unique: true },
+    //   confirmationCode: { 
+    //     type: String, 
+    //     unique: true },
 
 
 
+    profileImage:{
 
+    }
 });
 
 const user = mongoose.model('user', schema);

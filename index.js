@@ -36,13 +36,12 @@ const routerMenuOffers = require("./routers/menuOffers");
 const routercart = require("./routers/cart");
 const routerimg = require("./routers/imguser");
 const routerOrder = require("./routers/order");
-
+app.use("/upload", routerimg);
 app.use("/cart", routercart);
 app.use("/users", routerUser);
 app.use("/menu", routerMenu);
 app.use("/menuOffers", routerMenuOffers);
 app.use("/admin", routeradmin);
-app.use("/upload", routerimg);
 app.use("/order", routerOrder);
 
 
