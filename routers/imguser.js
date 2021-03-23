@@ -65,7 +65,7 @@ routerimg.post("/:id",upload.single("upload"), async (req, res) => {
     // const { authorization } = req.headers;
     // console.log(authorization);
     const {id} =req.params;
-console.log(id);
+     console.log(id);
     //  const decodedToken = jwt.verify(authorization,"secret_admin");
     //  console.log(decodedToken);
     const img = await Img.create({
@@ -84,13 +84,13 @@ console.log(id);
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
-routerimg.get('/', userAuth,async(req, res) => {
+routerimg.get('/:id',async(req, res) => {
   try {
-     // const { id_params } = req.params;
+     const { id_params } = req.params;
       // const { authorization } = req.headers;
       // const Data = jwt.verify(authorization,'secret_admin');
     // img=Img.find({userid: Data.id });
-      if(Img.find({userid:req.signedata.id})){
+      if(Img.find({menuid:id_params})){
       //  gfs.files.findOne({ filename: req.params.filename }, (err, file) => {
           //check if files exist
           if (!file || file.length == 0) {
