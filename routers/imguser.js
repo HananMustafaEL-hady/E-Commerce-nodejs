@@ -92,23 +92,20 @@ routerimg.get('/:id',async(req, res) => {
     console.log(id);
       if(Img.find({menuid:id})){
       
-         // if (!upload || upload.length == 0) {
-          //  return res.status(404).json({
-           //   err: "No files exist",
-           // });
-        //  }
-         // if (upload.contentType === "image/jpeg" || upload.contentType === "img/png") {
-            const readStream = gfs.createReadStream(upload.filename);
-            console.log(readStream);
+          if (!Img.upload || Img.upload.length == 0) {
+            return res.status(404).json({
+              err: "No files exist",
+            });
+          }
+          if (Img.upload.contentType === "image/jpeg" || Img.upload.contentType === "img/png") {
+            const readStream = gfs.createReadStream(Img.upload.filename);
             readStream.pipe(res);
 
-          //} else {
-         //   res.status(404).json({
-              
-            //  err: "Not an image",
-              
-         //   });
-        // }        
+          } else {
+            res.status(404).json({
+              err: "Not an image",
+            });
+          }        
       }
 
   } catch (err) {
