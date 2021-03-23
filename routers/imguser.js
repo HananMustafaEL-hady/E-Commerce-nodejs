@@ -54,12 +54,13 @@ let storage = new GridFsStorage({
     });
   },
 });
+///////////////////////////////////////////////////////////////////////////////////////////////
 
 const upload = multer({ storage });
 routerimg.post("/:id",upload.single("upload"), async (req, res) => {
   try {
 
-    const img_upload = req.file;
+    const {img_upload} = req.file;
     console.log(img_upload);
     // const { authorization } = req.headers;
     // console.log(authorization);
