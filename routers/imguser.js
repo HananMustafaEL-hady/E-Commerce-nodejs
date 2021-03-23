@@ -87,8 +87,10 @@ routerimg.post("/:id",upload.single("upload"), async (req, res) => {
 routerimg.get('/:id',async(req, res) => {
   try {
      const { id } = req.params;
-      
+     console.log(id);
     console.log(id);
+    console.log(id);
+
       if(Img.find({menuid:id})){
       
           if (!file || file.length == 0) {
