@@ -56,22 +56,23 @@ let storage = new GridFsStorage({
 });
 
 const upload = multer({ storage });
-routerimg.post("/", userAuth,upload.single("upload"), async (req, res) => {
+routerimg.post("/:id",upload.single("upload"), async (req, res) => {
   try {
 
     const img_upload = req.file;
     console.log(img_upload);
     // const { authorization } = req.headers;
     // console.log(authorization);
+    const id =req.params;
 
     //  const decodedToken = jwt.verify(authorization,"secret_admin");
     //  console.log(decodedToken);
     const img = await Img.create({
-    userid: req.signedata.id,
+    userid: id,
       upload: img_upload,
     });
     // console.log(img);
-    let user = await User.findOneAndUpdate({ _id:req.signedata.id}, { profileImage: img.upload });
+    let user = await User.findOneAndUpdate({ _id:id}, { profileImage: img.upload });
     // console.log(user);
 
     res.status(200).send(user);
