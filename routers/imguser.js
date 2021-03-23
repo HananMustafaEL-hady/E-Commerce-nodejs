@@ -17,6 +17,7 @@ const app = express();
 app.use(express.static("public"));
 const adminAuth=require('../middleware/authAdmin');
 const userAuth=require('../middleware/authUser');
+const Menu=require('../models/menu');
 
 const routerimg = new express.Router();
 // app.use(function (req, res, next) {
@@ -73,8 +74,8 @@ routerimg.post("/:id",upload.single("upload"), async (req, res) => {
       upload: img_upload,
     });
     // console.log(img);
-   // let user = await User.findOneAndUpdate({ _id:id}, { profileImage: img.upload });
-    // console.log(user);
+   let menu = await Menu.findOneAndUpdate({ _id:id}, { filename: img.upload });
+   console.log(menu);
 
     res.status(200).send(img);
   } catch (err) {
@@ -84,38 +85,37 @@ routerimg.post("/:id",upload.single("upload"), async (req, res) => {
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
-routerimg.get('/:id',async(req, res) => {
-  try {
-     const { id } = req.params;
-     console.log(id);
-    console.log(id);
-    console.log(id);
-
-      if(Img.find({menuid:id})){
+// routerimg.get('/:id',async(req, res) => {
+//   try {
+//      const { id } = req.params;
+//     //  console.log(id);
+//     // console.log(id);
+//     console.log(id);
+//       if(Img.find({menuid:id})){
       
-          if (!file || file.length == 0) {
-            return res.status(404).json({
-              err: "No files exist",
-            });
-          }
-          if (file.contentType === "image/jpeg" || file.contentType === "img/png") {
-            const readStream = gfs.createReadStream(file.filename);
-            readStream.pipe(res);
+//           if (!file || file.length == 0) {
+//             return res.status(404).json({
+//               err: "No files exist",
+//             });
+//           }
+//           if (file.contentType === "image/jpeg" || file.contentType === "img/png") {
+//             const readStream = gfs.createReadStream(file.filename);
+//             readStream.pipe(res);
 
-          } else {
-            res.status(404).json({
-              err: "Not an image",
-            });
-          }        
-      }
+//           } else {
+//             res.status(404).json({
+//               err: "Not an image",
+//             });
+//           }        
+//       }
 
-  } catch (err) {
-      res.statusCode = 422;
-      res.send(err);
+//   } catch (err) {
+//       res.statusCode = 422;
+//       res.send(err);
 
-  }
+//   }
 
-});
+// });
 routerimg.get('/show/:filename', (req, res) => {
   console.log(req.params.filename)
   gfs.files.find({ filename: req.params.filename }).toArray((err, file) => {

@@ -22,9 +22,8 @@ const menuschema = new mongoose.Schema({
         required:true
 
     },    
-img:{
-    data: Buffer,
-     type: String ,
+    filename:{
+    
 
 
 },
