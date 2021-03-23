@@ -51,7 +51,7 @@ routerOrder.get('/admin',async(req, res) => {
 
 // //9 Edit todo 
 
-routerOrder.patch('/s/:id',(req, res) => {
+routerOrder.patch('/:id',(req, res) => {
     const { id } = req.params;
     console.log(id);
     const order_status  = req.body;
@@ -65,8 +65,10 @@ routerOrder.delete('/:id',adminAuth ,(req, res) => {
     const { id } = req.params;
     
     Order.deleteOne({ _id: id, userid:req.signedata.id})
+}
 
-})
+
+)
 
 
 
