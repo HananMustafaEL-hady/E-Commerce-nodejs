@@ -51,14 +51,10 @@ routerOrder.get('/admin',async(req, res) => {
 
 // //9 Edit todo 
 
-routerOrder.patch('/s/:id', adminAuth,(req, res) => {
+routerOrder.patch('/s/:id',(req, res) => {
     const { id } = req.params;
     const order_status  = req.body;
-     Order.findOneAndUpdate({_id:id},{order_status:order_status}, function(err, order) {
-                if (err) throw "errorrrrrrr";
-                res.send(order);
-            })
-           
+     Order.findOneAndUpdate({_id:id},{order_status:order_status})
 
  });
 
