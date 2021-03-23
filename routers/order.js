@@ -56,8 +56,8 @@ routerOrder.patch('/:id',(req, res) => {
     console.log(id);
     const {order_status } = req.body;
     console.log(req.body);
-  const order=   Order.findOneAndUpdate({_id:id},{order_status:order_status});
-     res.send(order);
+  const order=Order.findOneAndUpdate({_id:id},{order_status:order_status});
+     res.json({order});
  }
  );
 
