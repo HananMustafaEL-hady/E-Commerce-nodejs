@@ -56,9 +56,10 @@ routerOrder.patch('/:id',(req, res) => {
     console.log(id);
     const {order_status } = req.body;
     console.log(req.body);
-     Order.findOneAndUpdate({_id:id},{order_status:order_status})
-
- });
+  const order=   Order.findOneAndUpdate({_id:id},{order_status:order_status});
+     res.send(order);
+ }
+ );
 
 //10 delete order
 routerOrder.delete('/:id',adminAuth ,(req, res) => {
