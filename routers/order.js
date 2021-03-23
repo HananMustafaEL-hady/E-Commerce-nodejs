@@ -51,16 +51,14 @@ routerOrder.get('/admin',async(req, res) => {
 
 // //9 Edit todo 
 
-routerOrder.patch('/:id',(req, res) => {
-    
+routerOrder.patch('/:id',async(req, res) => {
+
     const { id } = req.params;
     console.log(id);
     const {order_status } = req.body;
     console.log(req.body);
-  const order=Order.findOneAndUpdate({_id:id},{order_status:order_status});
+  const order= await Order.findOneAndUpdate({_id:id},{order_status:order_status});
      res.json({order});
-
-
  }
  );
 
