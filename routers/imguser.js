@@ -86,10 +86,10 @@ routerimg.post("/:id",upload.single("upload"), async (req, res) => {
 ///////////////////////////////////////////////////////////////////////////////////////////////
 routerimg.get('/:id',async(req, res) => {
   try {
-     const { id_params } = req.params;
+     const { id } = req.params;
       
-    console.log(id_params);
-      if(Img.find({menuid:id_params})){
+    console.log(id);
+      if(Img.find({menuid:id})){
       
           if (!file || file.length == 0) {
             return res.status(404).json({
