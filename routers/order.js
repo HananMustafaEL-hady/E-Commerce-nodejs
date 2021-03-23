@@ -54,7 +54,7 @@ routerOrder.get('/admin',async(req, res) => {
 routerOrder.patch('/:id',(req, res) => {
     const { id } = req.params;
     console.log(id);
-    const order_status  = req.body;
+    const {order_status } = req.body;
     console.log(req.body);
      Order.findOneAndUpdate({_id:id},{order_status:order_status})
 
