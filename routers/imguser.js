@@ -90,6 +90,7 @@ routerimg.get('/:id',async(req, res) => {
       // const { authorization } = req.headers;
       // const Data = jwt.verify(authorization,'secret_admin');
     // img=Img.find({userid: Data.id });
+    console.log(id_params);
       if(Img.find({menuid:id_params})){
       //  gfs.files.findOne({ filename: req.params.filename }, (err, file) => {
           //check if files exist
