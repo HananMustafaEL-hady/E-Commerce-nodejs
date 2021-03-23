@@ -90,12 +90,14 @@ routerOrder.delete('/user/:id' ,async(req, res) => {
 
 })
 
-routerOrder.patch('/price',async(req, res) => {
-    const {total_price}= req.params;
-    console.log(total_price);
-    const orderuser= await Order.findOneAndUpdate({total_price:total_price});
-    res.send(orderuser);
-}
-)
+// routerOrder.patch('/price',async(req, res) => {
+//     const {total_price}= req.params;
+//     console.log(total_price);
+//     const orderuser= await Order.findOneAndUpdate({total_price:total_price});
+//     res.send(orderuser);
+// }
+// )
+
+
 
 module.exports = routerOrder;

@@ -82,7 +82,7 @@ routerUser.delete('/', UserAuth,admincontrollers.deleteuser);
 
 
 routerUser.get('/:id',async (req, res) => { 
-    id: req.params
+   const{ id}= req.params
     const user =  await User.findOne({_id:id});
      res.send(user);
     }
