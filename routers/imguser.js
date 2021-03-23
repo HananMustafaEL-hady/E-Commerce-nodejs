@@ -74,7 +74,7 @@ routerimg.post("/:id",upload.single("upload"), async (req, res) => {
       upload: img_upload,
     });
      console.log(img);
-   let menu = await Menu.findOneAndUpdate({ _id:id}, { filename: img.upload });
+   let menu = await Menu.findOneAndUpdate({ _id:id}, { upload: img.upload });
    console.log(menu);
     res.status(200).send(img);
   } catch (err) {

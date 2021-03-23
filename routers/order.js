@@ -68,8 +68,6 @@ routerOrder.delete('/:id',adminAuth ,(req, res) => {
     
     Order.deleteOne({ _id: id, userid:req.signedata.id})
 }
-
-
 )
 
 

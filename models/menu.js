@@ -22,7 +22,7 @@ const menuschema = new mongoose.Schema({
         required:true
 
     },    
-    filename:{
+    upload:{
     
 
 
