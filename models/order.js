@@ -57,7 +57,7 @@ const Orderschema = new mongoose.Schema({
   },
   order_status: {
     type: String,
-    enum: ["accepted ", "pending", "rejected"],
+    // enum: ["accepted ", "pending", "rejected"],
     default: "pending",
   },
 
@@ -66,7 +66,7 @@ const Orderschema = new mongoose.Schema({
     type:Number
   }
 
-  
+
 });
 
 const order = mongoose.model("order", Orderschema);
