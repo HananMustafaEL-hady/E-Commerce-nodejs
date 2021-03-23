@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 Schema = mongoose.Schema;
 const imgschema = new mongoose.Schema({
-    userid: {
+  menuid: {
       type: Schema.ObjectId,
       ref: "userR",
       required: true,

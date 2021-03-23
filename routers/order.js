@@ -73,7 +73,6 @@ routerOrder.delete('/:id',adminAuth ,(req, res) => {
 )
 
 
-
 //10 delete order
 routerOrder.delete('/user/:id' ,async(req, res) => {
     const {id  }= req.params;

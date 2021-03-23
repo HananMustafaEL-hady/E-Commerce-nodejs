@@ -69,7 +69,7 @@ console.log(id);
     //  const decodedToken = jwt.verify(authorization,"secret_admin");
     //  console.log(decodedToken);
     const img = await Img.create({
-    userid: id,
+    menuid: id,
       upload: img_upload,
     });
     // console.log(img);
@@ -81,6 +81,9 @@ console.log(id);
     res.status(500).send(err);
   }
 });
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////
 routerimg.get('/', userAuth,async(req, res) => {
   try {
      // const { id_params } = req.params;
