@@ -63,7 +63,7 @@ routerimg.post("/:id",upload.single("upload"), async (req, res) => {
     console.log(img_upload);
     // const { authorization } = req.headers;
     // console.log(authorization);
-    const id =req.params;
+    const {id} =req.params;
 
     //  const decodedToken = jwt.verify(authorization,"secret_admin");
     //  console.log(decodedToken);
