@@ -57,8 +57,6 @@ type:Number,
     //     type: String, 
     //     unique: true },
 
-
-
     profileImage:{
 
     }
