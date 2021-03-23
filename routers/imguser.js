@@ -64,7 +64,7 @@ routerimg.post("/:id",upload.single("upload"), async (req, res) => {
     // const { authorization } = req.headers;
     // console.log(authorization);
     const {id} =req.params;
-
+console.log(id);
     //  const decodedToken = jwt.verify(authorization,"secret_admin");
     //  console.log(decodedToken);
     const img = await Img.create({
@@ -72,10 +72,10 @@ routerimg.post("/:id",upload.single("upload"), async (req, res) => {
       upload: img_upload,
     });
     // console.log(img);
-    let user = await User.findOneAndUpdate({ _id:id}, { profileImage: img.upload });
+   // let user = await User.findOneAndUpdate({ _id:id}, { profileImage: img.upload });
     // console.log(user);
 
-    res.status(200).send(user);
+    res.status(200).send(img);
   } catch (err) {
     res.status(500).send(err);
   }
