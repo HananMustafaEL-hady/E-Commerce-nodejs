@@ -40,7 +40,7 @@ routerOrder.get('/user',UserAuth, async(req, res) => {
 
 
 routerOrder.get('/admin',async(req, res) => {
-      const order = await Order.find({});
+      const order = await Order.find({}).populate('items.menuid');
         res.statusCode = 201;
         res.send(order);
     
