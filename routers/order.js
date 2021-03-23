@@ -26,7 +26,7 @@ routerOrder.post('/',UserAuth, async(req, res) => {
 routerOrder.get('/user',UserAuth, async(req, res) => {
 
         const order = await Order.find({userid:req.signedata.id }).populate('items.menuid');
-        const orderwithout = await Order.find({userid:req.signedata.id });
+      //  const orderwithout = await Order.find({userid:req.signedata.id });
 
         //console.log(order[1].items);       
 
@@ -49,7 +49,7 @@ routerOrder.get('/admin',async(req, res) => {
 
 
 
-// //9 Edit todo 
+// //9 Edit order
 
 routerOrder.patch('/:id',async(req, res) => {
 
