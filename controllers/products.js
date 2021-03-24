@@ -112,7 +112,7 @@ exports.deleteMenu=(req, res) => {
 // }
 exports.postcart=(req, res) => {
     console.log(req.body);
-    const {menuid,count,price,menuname} = req.body;
+    let {menuid,count,price,menuname} = req.body;
    const carusert= Cart.find({menuid:menuid});
    console.log(carusert);
    if(carusert){
