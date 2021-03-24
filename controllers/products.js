@@ -114,14 +114,20 @@ exports.postcart=(req, res) => {
     console.log(req.body);
     const {menuid,count,price,menuname} = req.body;
    const carusert= Cart.find({menuid:menuid});
+   console.log(carusert);
    if(carusert){
        count+=carusert.count;
-    Cart.findOneAndUpdate({ _id: id, userid:req.signedata.id }, {count:count})
+       console.log(count);
+   oldcart= Cart.findOneAndUpdate({ _id: id, userid:req.signedata.id }, {count:count});
+   res.send(oldcart);
     }
-   
+   else{
     const cart = Cart.create({ userid:req.signedata.id,menuid:menuid,count:count,price:price,menuname:menuname});
     console.log(cart);
     res.send(cart);
+
+   }
+    
 
 
 }
