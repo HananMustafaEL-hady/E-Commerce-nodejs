@@ -230,27 +230,53 @@ connection.once('open', () => {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // POST the profile image
-routerimg.post('/user', authUser, upload.single('image'), async (req, res) => {
+// routerimg.post('/user', authUser, upload.single('image'), async (req, res) => {
+//     try {
+//         console.log("Uploading ...... ")
+//         let { filename } = req.file;
+//         let { _id } = req.signedata;
+//         let image = await Image.findOne({ filename: req.file.filename });
+//         let date = new Date(image.uploadDate)
+//         console.log(image)
+//         // let userOld = await User.findOne({_id});
+//         // if(userOld.profileImage.length >= 0){
+//         //     let imageOld = await Image.find({filename:userOld.profileImage})
+//         // }
+//         let user = await User.findOneAndUpdate({ _id }, { profileImage: image.filename }, {
+//             new: true
+//         }).exec()
+//         console.log('TIME NOW: ', date.getHours() - 12, ':', date.getMinutes())
+//         res.status(200).send({ user, image, message: "Uploaded successfully", success: true })
+//     } catch (error) {
+//         res.status(404).send({ error, message: "Unable to upload", success: false })
+//     }
+// })
+
+
+routerimg.post('/user/:productId',upload.single('image'), async (req, res) => {
     try {
         console.log("Uploading ...... ")
+        console.log(req)
         let { filename } = req.file;
-        let { _id } = req.signedata;
+        console.log(filename)
+        let { productId } = req.params;
+        console.log(productId)
         let image = await Image.findOne({ filename: req.file.filename });
         let date = new Date(image.uploadDate)
         console.log(image)
-        // let userOld = await User.findOne({_id});
-        // if(userOld.profileImage.length >= 0){
-        //     let imageOld = await Image.find({filename:userOld.profileImage})
-        // }
-        let user = await User.findOneAndUpdate({ _id }, { profileImage: image.filename }, {
+        let product = await User.findOneAndUpdate({ _id:productId }, { image: image.filename }, {
             new: true
         }).exec()
+        console.log(product)
         console.log('TIME NOW: ', date.getHours() - 12, ':', date.getMinutes())
-        res.status(200).send({ user, image, message: "Uploaded successfully", success: true })
+        res.status(200).send({ product, image, message: "Uploaded successfully", success: true })
     } catch (error) {
         res.status(404).send({ error, message: "Unable to upload", success: false })
     }
 })
+
+
+
 
 // POST the product image
 routerimg.post('/product/:productId', upload.single('image'), async (req, res) => {
