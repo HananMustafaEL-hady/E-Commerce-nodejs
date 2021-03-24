@@ -111,14 +111,15 @@ exports.deleteMenu=(req, res) => {
 //     res.send(cart);
 // }
 exports.postcart=(req, res) => {
+    
     console.log(req.body);
     let {menuid,count,price,menuname} = req.body;
-   const carusert= Cart.find({menuid:menuid});
+   const carusert= Cart.find({menuid:menuid,userid:req.signedata.id});
    console.log(carusert);
    if(carusert){
        count+=carusert.count;
        console.log(count);
-   oldcart= Cart.findOneAndUpdate({ _id: id, userid:req.signedata.id }, {count:count});
+   oldcart= Cart.findOneAndUpdate({menuid:menuid, userid:req.signedata.id }, {count:count});
    res.send(oldcart);
     }
    else{
