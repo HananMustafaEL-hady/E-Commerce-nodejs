@@ -111,24 +111,11 @@ exports.deleteMenu=(req, res) => {
 //     res.send(cart);
 // }
 exports.postcart=(req, res) => {
-    
     console.log(req.body);
-    let {menuid,count,price,menuname} = req.body;
-   const carusert= Cart.find({menuid:menuid,userid:req.signedata.id});
-   console.log(carusert);
-   if(carusert){
-       count+=carusert.count;
-       console.log(count);
-   oldcart= Cart.findOneAndUpdate({menuid:menuid, userid:req.signedata.id }, {count:count});
-   res.send(oldcart);
-    }
-   else{
+    const {menuid,count,price,menuname} = req.body;
     const cart = Cart.create({ userid:req.signedata.id,menuid:menuid,count:count,price:price,menuname:menuname});
     console.log(cart);
     res.send(cart);
-
-   }
-    
 
 
 }
