@@ -185,7 +185,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const router = express.Router();
-const config = require('../config');
+// const config = require('../config');
 const crypto = require('crypto');
 const path = require('path')
 const multer = require('multer');
@@ -204,7 +204,7 @@ const {adminAuthenticate } = require('../middleware/authAdmin');
 
 
 const storage = new GridFsStorage({
-    url: config.database,
+    url: "mongodb+srv://sayed:sa12345@mynode.qhp5b.mongodb.net/DB?retryWrites=true&w=majority",
     file: (req, file) => {
         return new Promise((resolve, reject) => {
             crypto.randomBytes(16, (err, buf) => {
