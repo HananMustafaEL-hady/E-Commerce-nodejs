@@ -1,19 +1,28 @@
-const mongoose = require("mongoose");
-Schema = mongoose.Schema;
-const imgschema = new mongoose.Schema({
-  menuid: {
-      type: Schema.ObjectId,
-      ref: "userR",
-      required: true,
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const imageSchema = Schema({
+    length:{
+        type:Number,
     },
-  // userid: {
-  //   type: Number,
-  // },
-  upload: {
-  },
+    chunkSize:{
+        type:Number
+    },
+    uploadDate:{
+        type:Date
+    },
+    filename:{
+        type:String
+    },
+    md5:{
+        type:String
+    },
+    contentType:{
+        type:String
+    }
+},
+{collection:'uploads.files'}
+)
 
-  filename:{}
-});
+const Image = mongoose.model('Image', imageSchema);
 
-const imgs = mongoose.model("imgschema", imgschema);
-module.exports = imgs;
+module.exports = Image
