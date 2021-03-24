@@ -11,6 +11,8 @@ const imgschema = new mongoose.Schema({
   // },
   upload: {
   },
+
+  filename:{}
 });
 
 const imgs = mongoose.model("imgschema", imgschema);

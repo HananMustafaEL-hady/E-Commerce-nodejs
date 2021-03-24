@@ -29,6 +29,10 @@ const menuschema = new mongoose.Schema({
 },
 size:{
     enum: ["L", "M", "S"],
+},
+
+image:{
+
 }
 }
 );
