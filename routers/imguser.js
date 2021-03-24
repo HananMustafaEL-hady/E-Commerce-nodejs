@@ -278,7 +278,7 @@ routerimg.post('/product/:productId', upload.single('image'), async (req, res) =
 //To get and show any image
 routerimg.get('/show/:filename', (req, res) => {
     console.log(req.params.filename)
-    gfs.files.find({ filename: req.params.filename }).toArray((err, file) => {
+    gfs.files.find({ filename: req.params }).toArray((err, file) => {
         console.log(file[0])
         if (!file[0] || file[0].length === 0) {
             return res.status(404).send({ err: 'No file exists' })
