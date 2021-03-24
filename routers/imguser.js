@@ -12,14 +12,11 @@
 // const multerStorage = multer.memoryStorage();
 // const sharp = require("sharp");
 // var mongo = require("mongodb");
-// const express = require("express");
-// const app = express();
-// app.use(express.static("public"));
+
 // const adminAuth=require('../middleware/authAdmin');
 // const userAuth=require('../middleware/authUser');
 // const Menu=require('../models/menu');
 
-// const routerimg = new express.Router();
 // // app.use(function (req, res, next) {
 // //   res.header("Access-Control-Allow-Origin", "*");
 // //   res.header("Access-Control-Allow-Methods", "GET, POST, PUT ,DELETE");
@@ -181,10 +178,12 @@
 
 
 
-
-const express = require('express');
+const express = require("express");
+const app = express();
+app.use(express.static("public"));
+//const express = require('express');
 const mongoose = require('mongoose');
-const router = express.Router();
+// const router =  new express.Router();
 // const config = require('../config');
 const crypto = require('crypto');
 const path = require('path')
@@ -194,10 +193,11 @@ const Grid = require('gridfs-stream');
 const User = require('../models/user')
 const Image = require('../models/imguser')
 const ImageChunk = require('../models/imageChunkModel')
-const Product = require('../models/menu')
-const connection = require('../DB-connection');
-const { authenticate } = require('../middleware/authUser');
-const {adminAuthenticate } = require('../middleware/authAdmin');
+const Product = require('../models/menu');
+ const connection = require('../connection');
+ const adminAuth=require('../middleware/authAdmin');
+ const authUser = require('../middleware/authUser');
+ const routerimg = new express.Router();
 
 
 
@@ -228,8 +228,9 @@ connection.once('open', () => {
     gfs.collection('uploads')
 });
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // POST the profile image
-router.post('/user', authenticate, upload.single('image'), async (req, res) => {
+routerimg.post('/user', authUser, upload.single('image'), async (req, res) => {
     try {
         console.log("Uploading ...... ")
         let { filename } = req.file;
@@ -252,7 +253,7 @@ router.post('/user', authenticate, upload.single('image'), async (req, res) => {
 })
 
 // POST the product image
-router.post('/product/:productId', upload.single('image'), async (req, res) => {
+routerimg.post('/product/:productId', upload.single('image'), async (req, res) => {
     try {
         console.log("Uploading ...... ")
         console.log(req)
@@ -275,7 +276,7 @@ router.post('/product/:productId', upload.single('image'), async (req, res) => {
 })
 
 //To get and show any image
-router.get('/show/:filename', (req, res) => {
+routerimg.get('/show/:filename', (req, res) => {
     console.log(req.params.filename)
     gfs.files.find({ filename: req.params.filename }).toArray((err, file) => {
         console.log(file[0])
@@ -292,18 +293,18 @@ router.get('/show/:filename', (req, res) => {
     })
 })
 
-router.delete('/delete/:_id', authenticate, (req, res) => {
-    let { _id } = req.params;
-    gfs.remove({ _id, root: 'uploads' }, (err, gridStore) => {
-        if (err) {
-            return res.status(404).send({ err })
-        }
-        res.status(200).send({ success: true, message: "Image was deleted successfully" })
-    })
-})
+// routerimg.delete('/delete/:_id', authenticate, (req, res) => {
+//     let { _id } = req.params;
+//     gfs.remove({ _id, root: 'uploads' }, (err, gridStore) => {
+//         if (err) {
+//             return res.status(404).send({ err })
+//         }
+//         res.status(200).send({ success: true, message: "Image was deleted successfully" })
+//     })
+// })
 
 
 
 
 
-module.exports = router;
+module.exports = routerimg;
